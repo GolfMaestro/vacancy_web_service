@@ -5,7 +5,7 @@ import javax.validation.constraints.*;
 
 @Entity
 @Table(name = "vacancies")
-public class vacancy {
+public class Vacancy {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,7 +20,6 @@ public class vacancy {
     @NotBlank(message = "Position cannot be blank")
     private String position;
 
-    @NotBlank(message = "Salary cannot be blank")
     @PositiveOrZero(message = "Salary cannot be negative")
     private Integer salary;
 
@@ -30,7 +29,10 @@ public class vacancy {
     @NotNull(message = "City cannot be null")
     private String city;
 
-    public vacancy(String name, String description, String position, Integer salary, String experience, String city) {
+    public Vacancy() {
+    }
+
+    public Vacancy(String name, String description, String position, Integer salary, String experience, String city) {
         this.name = name;
         this.description = description;
         this.position = position;
@@ -71,11 +73,11 @@ public class vacancy {
         this.position = position;
     }
 
-    public @NotBlank(message = "Salary cannot be blank") @PositiveOrZero(message = "Salary cannot be negative") Integer getSalary() {
+    public @PositiveOrZero(message = "Salary cannot be negative") Integer getSalary() {
         return salary;
     }
 
-    public void setSalary(@NotBlank(message = "Salary cannot be blank") @PositiveOrZero(message = "Salary cannot be negative") Integer salary) {
+    public void setSalary(@PositiveOrZero(message = "Salary cannot be negative") Integer salary) {
         this.salary = salary;
     }
 
