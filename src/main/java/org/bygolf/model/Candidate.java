@@ -1,11 +1,11 @@
 package org.bygolf.model;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
-public class candidate {
+@Entity
+@Table(name = "candidates")
+public class Candidate {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,7 +20,10 @@ public class candidate {
     @NotBlank(message = "Position of interest cannot be blank")
     private String positionOfInterest;
 
-    public candidate(String name, String city, String positionOfInterest) {
+    public Candidate() {
+    }
+
+    public Candidate(String name, String city, String positionOfInterest) {
         this.name = name;
         this.city = city;
         this.positionOfInterest = positionOfInterest;

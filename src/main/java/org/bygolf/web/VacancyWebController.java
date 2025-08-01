@@ -1,6 +1,8 @@
 package org.bygolf.web;
 
+import org.bygolf.model.Candidate;
 import org.bygolf.model.Vacancy;
+import org.bygolf.service.CandidateService;
 import org.bygolf.service.VacancyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -15,8 +17,12 @@ public class VacancyWebController {
     @Autowired
     VacancyService vacancyService;
 
-    public VacancyWebController(VacancyService vacancyService) {
+    @Autowired
+    CandidateService candidateService;
+
+    public VacancyWebController(VacancyService vacancyService, CandidateService candidateService) {
         this.vacancyService = vacancyService;
+        this.candidateService = candidateService;
     }
 
     @GetMapping("/")
@@ -29,9 +35,19 @@ public class VacancyWebController {
         return vacancyService.getVacancies();
     }
 
-    @PostMapping("/vacancy")
+    @PutMapping("/vacancy")
     public Vacancy addVacancy(@Valid Vacancy vacancy) {
         return vacancyService.addVacancy(vacancy);
+    }
+
+    @GetMapping("/candidate")
+    public List<Candidate> getCandidates() {
+        return candidateService.getCandidates();
+    }
+
+    @PutMapping("/candidate")
+    public Candidate addCandidate(Candidate candidate) {
+        return candidateService.addCandidate(candidate);
     }
 
 }
