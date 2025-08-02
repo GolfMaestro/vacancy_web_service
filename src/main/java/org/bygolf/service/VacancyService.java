@@ -22,4 +22,8 @@ public class VacancyService {
         return savedVacancy;
     }
 
+    public List<Vacancy> searchVacancyByFilter(String name, String city, String position) {
+        return vacancyRepository.findVacancyByFilter(name, city, position);
+    }
+
 }

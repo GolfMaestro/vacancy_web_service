@@ -31,8 +31,10 @@ public class VacancyWebController {
     }
 
     @GetMapping("/vacancy")
-    public List<Vacancy> getVacancies() {
-        return vacancyService.getVacancies();
+    public List<Vacancy> getVacancies(@RequestParam(required = false) String name,
+                                      @RequestParam(required = false) String city,
+                                      @RequestParam(required = false) String position) {
+        return vacancyService.searchVacancyByFilter(name, city, position);
     }
 
     @PutMapping("/vacancy")
