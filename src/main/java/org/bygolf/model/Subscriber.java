@@ -4,8 +4,8 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
 @Entity
-@Table(name = "candidates")
-public class Candidate {
+@Table(name = "subscribers")
+public class Subscriber {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,10 +20,10 @@ public class Candidate {
     @NotBlank(message = "Position of interest cannot be blank")
     private String positionOfInterest;
 
-    public Candidate() {
+    public Subscriber() {
     }
 
-    public Candidate(String name, String city, String positionOfInterest) {
+    public Subscriber(String name, String city, String positionOfInterest) {
         this.name = name;
         this.city = city;
         this.positionOfInterest = positionOfInterest;

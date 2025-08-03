@@ -1,8 +1,8 @@
 package org.bygolf.web;
 
-import org.bygolf.model.Candidate;
+import org.bygolf.model.Subscriber;
 import org.bygolf.model.Vacancy;
-import org.bygolf.service.CandidateService;
+import org.bygolf.service.SubscriberService;
 import org.bygolf.service.VacancyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -18,11 +18,11 @@ public class VacancyWebController {
     VacancyService vacancyService;
 
     @Autowired
-    CandidateService candidateService;
+    SubscriberService subscriberService;
 
-    public VacancyWebController(VacancyService vacancyService, CandidateService candidateService) {
+    public VacancyWebController(VacancyService vacancyService, SubscriberService subscriberService) {
         this.vacancyService = vacancyService;
-        this.candidateService = candidateService;
+        this.subscriberService = subscriberService;
     }
 
     @GetMapping("/")
@@ -42,14 +42,14 @@ public class VacancyWebController {
         return vacancyService.addVacancy(vacancy);
     }
 
-    @GetMapping("/candidate")
-    public List<Candidate> getCandidates() {
-        return candidateService.getCandidates();
+    @GetMapping("/subscriber")
+    public List<Subscriber> getSubscribers() {
+        return subscriberService.getSubscribers();
     }
 
-    @PutMapping("/candidate")
-    public Candidate addCandidate(Candidate candidate) {
-        return candidateService.addCandidate(candidate);
+    @PutMapping("/subscriber")
+    public Subscriber addSubscriber(Subscriber subscriber) {
+        return subscriberService.addSubscriber(subscriber);
     }
 
 }
