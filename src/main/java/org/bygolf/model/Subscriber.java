@@ -11,6 +11,9 @@ public class Subscriber {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message = "Email cannot be blank")
+    private String email;
+
     @NotBlank(message = "Name cannot be blank")
     private String name;
 
@@ -18,15 +21,16 @@ public class Subscriber {
     private String city;
 
     @NotBlank(message = "Position of interest cannot be blank")
-    private String positionOfInterest;
+    private String position;
 
     public Subscriber() {
     }
 
-    public Subscriber(String name, String city, String positionOfInterest) {
+    public Subscriber(String email, String name, String city, String position) {
+        this.email = email;
         this.name = name;
         this.city = city;
-        this.positionOfInterest = positionOfInterest;
+        this.position = position;
     }
 
     public Long getId() {
@@ -35,6 +39,14 @@ public class Subscriber {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public @NotBlank(message = "Name cannot be blank") String getName() {
@@ -53,11 +65,11 @@ public class Subscriber {
         this.city = city;
     }
 
-    public @NotBlank(message = "Position of interest cannot be blank") String getPositionOfInterest() {
-        return positionOfInterest;
+    public @NotBlank(message = "Position of interest cannot be blank") String getPosition() {
+        return position;
     }
 
-    public void setPositionOfInterest(@NotBlank(message = "Position of interest cannot be blank") String positionOfInterest) {
-        this.positionOfInterest = positionOfInterest;
+    public void setPosition(@NotBlank(message = "Position of interest cannot be blank") String position) {
+        this.position = position;
     }
 }
