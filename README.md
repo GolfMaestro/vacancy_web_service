@@ -1,1 +1,2 @@
 Для запуска необходимо открыть проект в intelij idea, выбрать SDK 21 и запустить main метод в файле VacancyWebSpringApplication.
+Для запуска теста VacancyEmailServiceTest необходимо отключить EmailRoute (например полностью закомментировать этот файл).
